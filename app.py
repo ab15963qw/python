@@ -17,7 +17,7 @@ def stock():
     start_date = request.form['start_date']
     end_date = request.form['end_date']
     
-    # 将字符串转换为日期对象
+    # 将字符串转换为日期对象1234565
     start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
     end_date = datetime.datetime.strptime(end_date, '%Y-%m-%d')
 
