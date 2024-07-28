@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Viewer</title>
+</head>
+<body>
+    <h1>Stock Viewer</h1>
+    <form action="/stock" method="post">
+        <label for="stock_id">Stock ID:</label>
+        <input type="text" id="stock_id" name="stock_id" placeholder="Enter Stock ID" required>
+        <br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" id="start_date" name="start_date" required>
+        <br>
+        <label for="end_date">End Date:</label>
+        <input type="date" id="end_date" name="end_date" required>
+        <br>
+        <button type="submit">View Stock</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock {{ stock_id }}</title>
+    <script>
+        function fetchRealTimeStockInfo() {
+            fetch(`/realtime_stock/{{ stock_id }}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('real_time_price').innerText = data.real_time_price;
+                    document.getElementById('high').innerText = data.high;
+                    document.getElementById('low').innerText = data.low;
+                    document.getElementById('volume').innerText = data.volume;
+                })
+                .catch(error => console.error('Error fetching real-time stock data:', error));
+        }
+
+        // 每5秒刷新一次实时股票信息
+        setInterval(fetchRealTimeStockInfo, 5000);
+    </script>
+</head>
+<body onload="fetchRealTimeStockInfo()">
+    <h1>Stock {{ stock_id }}</h1>
+    <div>
+        <h2>Real-time Stock Information</h2>
+        <p>Current Price: <span id="real_time_price">Loading...</span></p>
+        <p>High: <span id="high">Loading...</span></p>
+        <p>Low: <span id="low">Loading...</span></p>
+        <p>Volume: <span id="volume">Loading...</span></p>
+    </div>
+    <div>
+        <h2>Historical Stock Data</h2>
+        <img src="data:image/png;base64,{{ plot_url }}">
+    </div>
+    <br>
+    <a href="/">Back</a>
+</body>
+</html>
